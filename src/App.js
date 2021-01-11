@@ -1,25 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import './scss/App.scss';
+import Header from './compopents/header';
+import Books from './compopents/books';
+import { connect } from 'react-redux';
+import Loader from './compopents/loader';
+import { changeAlert, searchBook, setBooks } from './redux/reducers/booksReducer';
+import { useEffect } from 'react';
+import { Redirect, Route, withRouter } from 'react-router-dom';
+import { compose } from 'redux';
+import Cart from './compopents/pages/cart';
+import HomePage from './compopents/pages/home';
 
-function App() {
+
+function App(props) {
+
+  useEffect(()=>{
+   props.setBooks()
+  },[])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App container-xxl">
+      <Header setBooks={ props.setBooks} searchBook={props.searchBook} choosenBooks={props.choosenBooks}/>
+      {
+        props.isLoading ? <Loader /> :
+        <>
+          <Route path='/' exact render={() => <HomePage/>}/>
+          <Route path='/cart' exact render={() => <Cart />}/>
+          
+        </>
+      }
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = (state) =>({
+  books: state.books.books,
+  isLoading: state.books.isLoading,
+  alert: state.books.alert,
+  searchedBook: state.books.searchedBook,
+  choosenBooks: state.cart.choosenBooks
+})
+
+export default compose(
+  withRouter,
+  connect(mapStateToProps, {setBooks,searchBook, changeAlert})
+)(App)

@@ -1,0 +1,189 @@
+@import './mixins.scss';
+@import './nule.scss';
+@import "~bootstrap/scss/bootstrap";
+@import './cart.scss';
+
+$backgrd: 'https://www.mola.com/wp-content/uploads/2016/02/pattern-web-1-1024x576.jpg';
+
+.App {
+  display: flex;
+  flex-direction: column;
+  padding: 100px 20px 20px;
+  @media (max-width: 400px) {
+    padding: 100px 5px 20px;
+    
+  }  
+  background: url($backgrd);
+  min-height: 100vh;
+}
+
+.header{
+  font-weight: bold;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+  & .navbar-brand>img{
+    width: 50px;
+    border-radius: 50%;
+    border: 2px solid black;
+  }
+  & .cartIcon{
+    position: relative;
+    & img{
+      width: 40px;
+      margin-right: 20px;
+      opacity: 0.8;
+      position: relative;
+    }
+    & span{
+      position: absolute;
+      right: 10px;
+      top: 0;
+      background: red;
+      padding: 5px;
+      @include adaptiv-font(10,8);
+      font-weight: bold;
+      border-radius: 20px;
+      color: white;
+    }
+  }
+  & .header__links{
+    display: flex;
+    @media (max-width: 539px) {
+      display: none;
+    }
+  }
+  & .header__menu {
+    display: flex;
+    @media (max-width: 539px) {
+     justify-content: center;
+    }
+  }
+
+  & .header__container{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+.books{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+  gap: 20px;
+  padding: 20px;
+  justify-items: center;
+  @media (max-width: 400px) {
+    display: block;
+    text-align: center;
+    padding: 5px;
+  }
+}
+
+.sortBooksBtns{
+  text-align: left;
+  margin-bottom: 20px;
+  @media (max-width: 400px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  & button{
+    @include adaptiv-font(15,13);
+    @media (max-width: 400px) {
+     width: 100px;
+     margin: 0 0 20px;
+    }
+    min-width: 100px;
+    border-radius: 20px;
+    margin: 0 10px;
+    &:first-child{margin-left: 0;}
+    &:last-child{margin-right: 0;}
+  }
+}
+
+.book{
+  border: 2px solid black;
+  border-radius: 20px;
+  overflow: hidden;
+  min-width: 100px;
+  width: 220px;
+  & .card-title{  @include adaptiv-font(18,14)}
+  & .list-group, .book__body{  @include adaptiv-font(15,13); text-align: center; }
+  & .book__body {
+    display: flex;
+    flex-direction: column;
+    & span{
+      font-weight: bold;
+    }
+  }
+  & .btn_container{
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  & .book__img{
+    position: relative;
+    background: black;
+    height: 20vw;
+    max-height: 320px;
+    min-height: 280px;
+    width: 100%;
+  }
+  @media (max-width: 539px) {
+    display: flex;
+    flex-direction: row;      
+    width: 100%;
+    max-width: 350px;
+    margin-bottom: 20px;
+    & .book__body{ flex: 0 0 50%; max-width: 50%; min-height: 250px; padding: 10px; margin: auto 0; height: 100%; border-left: inherit;}
+    & .book__img{ flex:  0 0 50%; max-width: 50%;  min-height: 250px; margin: 0; margin: auto 0; background: black;}
+  }
+} 
+
+.spinner {
+  position:  absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.spinner-border{
+  width: 50px;
+  height: 50px;
+}
+
+.alert{
+  position: relative;
+  left: 50%;
+  top: 200px;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  border-radius: 20px;
+  padding: 50px 20px;
+  & .close{
+    position:  absolute;
+    right: 10px;
+    transform: scale(1.2);
+    top: 15px;
+  }
+}
+
+.seacrhBook{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.search{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  & h2, .book{
+    margin-bottom: 20px;
+  }
+}

@@ -1,0 +1,81 @@
+@import './mixins.scss';
+
+.cart__book{
+   border-bottom: 1px solid black;;
+   display: flex;
+   width: 100%;
+   justify-content: space-between;
+   align-items: center;
+   margin-bottom: 20px;
+   padding: 0 5% 20px;
+   & .book__img{
+      border: 2px solid black;
+      border-radius: 20px;
+      width: 90px;
+      margin-left: 10px;
+      @media (max-width: 1000px) {
+        margin: 0 0 20px;
+      } 
+   };
+   & .book__title{
+      font-weight: bold;
+      margin-right: 10px;   
+      flex: 0 0 50%;
+      text-align: center;
+      @include adaptiv-font(18,15);
+      @media (max-width: 1000px) {
+         margin: 0 0 20px;
+       } 
+   }
+   & .book__price{
+      margin-right: 10px;
+      @include adaptiv-font(18,15);
+      color: black;
+      font-weight: bold;
+      @media (max-width: 1000px) {
+         margin: 0 0 20px;
+       }
+   }
+   & .book_count{
+      @include adaptiv-font(16,13);
+      color: black;
+      font-weight: bold;
+      @media (max-width: 1000px) {
+         margin: 0 0 20px;
+       } 
+   }
+   & button{
+      margin:0 10px;
+   }
+   @media (max-width: 1000px) {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+   }
+}
+
+.cart ul li:last-child .cart__book{ border: none;}
+
+.cart p {
+   @include adaptiv-font(18,15);
+   color: black;
+   font-weight: bold; 
+}
+
+.cart__price{
+   @include adaptiv-font(18,15);
+   color: black;
+   font-weight: bold;
+   display: flex;
+   flex-direction: column;
+   align-items: flex-end;
+   & span{ color: darkred; margin-bottom: 20px;}
+}
+
+.cartEmpty{
+   & p{margin: 50px 0;}
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
