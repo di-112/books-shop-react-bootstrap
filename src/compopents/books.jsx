@@ -7,7 +7,6 @@ const Books = ({books, setBooks, sortPriceDown, sortPriceUp}) => {
    if(books.length===1)
    return (
       <div className="search container">
-         <h2>Реузльтат поиска:</h2>
          {books.map(book => <Book key={book.title} book={book}/>)}
          <button className='btn btn-danger' onClick={setBooks}>Назад</button>
       </div>
