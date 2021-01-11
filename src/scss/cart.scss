@@ -39,6 +39,8 @@
    & .book_count{
       @include adaptiv-font(16,13);
       color: black;
+      min-width: 150px; 
+      margin: 0 auto;
       font-weight: bold;
       @media (max-width: 1000px) {
          margin: 0 0 20px;

@@ -17,7 +17,7 @@ const Alert = (props) => {
    return (  
         <div className={`alert ${className}`}> 
             <span> <strong>Внимание!</strong> {message} </span>
-            <NavLink to='/' exact onClick={() => props.changeAlert({ show: false, type: '' })} type="button" class="alert__closeBtn close">&times;</NavLink>
+            <button  onClick={() => props.changeAlert({ show: false, type: '' })} type="button" class="alert__closeBtn close">&times;</button>
          </div> 
    )
 }

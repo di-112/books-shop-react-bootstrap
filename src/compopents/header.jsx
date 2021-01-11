@@ -22,13 +22,13 @@ const Header = (props) => {
    return ( 
       <header className="header navbar navbar-expand-lg navbar-light bg-light">
          <div className="header__container">
-            <NavLink to='/' exact onClick={props.setBooks} className="navbar-brand" aria-current="page" href="#">
+            <NavLink to='/home' exact onClick={props.setBooks} className="navbar-brand" aria-current="page" href="#">
                <img src={logoImg} alt=""/>
             </NavLink>
             <div className="header__menu collapse navbar-collapse" id="navbarSupportedContent">
                <ul className="header__links navbar-nav mr-auto mb-2 mb-lg-0">
                   <li className="nav-item">
-                     <NavLink to='/' exact className="nav-link" aria-current="page" onClick={props.setBooks} href="#">Home</NavLink>
+                     <NavLink to='/home' exact className="nav-link" aria-current="page" onClick={props.setBooks} href="#">Home</NavLink>
                   </li>
                   <li className="nav-item">
                      <NavLink to='/cart' className="nav-link" aria-current="page" href="#">Cart</NavLink>

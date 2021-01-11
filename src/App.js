@@ -19,11 +19,12 @@ function App(props) {
 
   return (
     <div className="App container-xxl">
+      <Redirect to='/home' />
       <Header setBooks={ props.setBooks} searchBook={props.searchBook} choosenBooks={props.choosenBooks}/>
       {
         props.isLoading ? <Loader /> :
         <>
-          <Route path='/' exact render={() => <HomePage/>}/>
+          <Route path='/home' exact render={() => <HomePage/>}/>
           <Route path='/cart' exact render={() => <Cart />}/>
           
         </>
