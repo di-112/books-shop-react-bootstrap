@@ -17,7 +17,7 @@ const Cart = (props) => {
             </>
             :<div className='cartEmpty'>
                <p style={{textAlign: 'center'}}>Корзина пуста</p>
-               <NavLink to='/' exact type="button" class="btn btn-danger">Back</NavLink>
+               <NavLink to='/' exact type="button" className="btn btn-danger">Back</NavLink>
             </div>}
       </div>
    )

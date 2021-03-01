@@ -22,7 +22,7 @@ const booksReducer = (state=initialState, action) => {
       case SEARCH_BOOK: 
       return ( {
          ...state,
-         books:[ action.book]
+         books:[ ...action.books]
       })
       case TOGGLE_IS_LOADING: 
       return ( {
@@ -41,7 +41,7 @@ const booksReducer = (state=initialState, action) => {
 export default booksReducer
 
 const setBooksAC = (books) => ({type: SET_BOOKS, books})
-const searchBookAC = (book) => ({type: SEARCH_BOOK, book})
+const searchBookAC = (books) => ({type: SEARCH_BOOK, books})
 const toogleIsLoading = (isLoading) => ({type: TOGGLE_IS_LOADING, isLoading})
 export const changeAlert = (alert) => ({type: SET_ALERT, alert})
 
@@ -72,15 +72,16 @@ export const sortPriceUp = () => (dispatch) => {
 
 export const searchBook = (bookTitle) => (dispatch) => {
    dispatch(toogleIsLoading(true))
-   console.log('response.data')
    API.getBooks().then(data => {
       let isFoundBook = false  
+      let books = []
       data.forEach(book => {
-        if(book.title===bookTitle){
-            dispatch(searchBookAC(book))
+        if(book.title.includes(bookTitle)){
+            books.push(book)
             isFoundBook = true
          }
-      })   
+      })
+      if(isFoundBook)dispatch(searchBookAC(books))   
       if(!isFoundBook)dispatch(changeAlert({type:'danger', show: true}))
       dispatch(toogleIsLoading(false))
    })
