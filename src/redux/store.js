@@ -6,12 +6,12 @@ import thunk from 'redux-thunk'
 import cartReducer from './reducers/cartReducer'
 
 
-const redusers = combineReducers({ 
+const reducers = combineReducers({
    form:  formReducer,
    books: booksReducer,
    cart: cartReducer
 })
 
-const store = createStore(redusers, applyMiddleware(thunk))
+const store = createStore(reducers, applyMiddleware(thunk))
 
 export default store

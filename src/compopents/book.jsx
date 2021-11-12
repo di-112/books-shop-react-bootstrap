@@ -1,13 +1,14 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { addBook, removeBook } from '../redux/reducers/cartReducer'
+import cartStore from "../mobx/cartStore";
+import {observer} from "mobx-react-lite";
 
-const Book = ({book, addBook, choosenBooks, removeBook}) => {
+const Book = observer(({book}) => {
+  const {addBook, choosenBooks, removeBook} = cartStore
    return (
-     <div class="card book" >
-        <img src={book.image} class="card-img-top book__img" alt="..."/>
-        <div class="card-body book__body">
-           <h5 class="card-title">{book.title}</h5>
+     <div className="card book" >
+        <img src={book.image} className="card-img-top book__img" alt="..."/>
+        <div className="card-body book__body">
+           <h5 className="card-title">{book.title}</h5>
            <ul className="list-group list-group-flush">
               <li className="list-group-item"><span> Автор:</span> {book.author}</li>
               <li className="list-group-item"><span>Цена:</span> {book.price} руб.</li>
@@ -22,11 +23,6 @@ const Book = ({book, addBook, choosenBooks, removeBook}) => {
          </div>
       </div>
             )
-}
-
-const mapStateToProps = (state) => ({
-  choosenBooks: state.cart.choosenBooks
 })
 
-
-export default connect(mapStateToProps,{addBook,removeBook})(Book)
+export default Book

@@ -1,19 +1,21 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { NavLink } from 'react-router-dom'
-import { addBook, removeBook } from '../../redux/reducers/cartReducer'
+import {NavLink} from 'react-router-dom'
 import CardItem from '../cartItem'
+import cartStore from "../../mobx/cartStore";
+import {observer} from "mobx-react-lite";
 
-const Cart = (props) => {
+const Cart = observer(() => {
+
+   const {choosenBooks, removeBook, addBook, allPrice} = cartStore
 
    return (
       <div className="cart container">
-         {props.choosenBooks.length?
+         {choosenBooks.length?
             <>
             <ul>
-            {props.choosenBooks.map(book=><li><CardItem book={book} removeBook={props.removeBook} addBook={props.addBook}/></li>)}
+            {choosenBooks.map(book=><li><CardItem book={book} removeBook={removeBook} addBook={addBook}/></li>)}
             </ul>
-           <div className="cart__price">Общая сумма: <span>{props.allPrice} рублей</span> <a className='btn btn-success' href='https://qiwi.com/' target='_blank' >Купить</a></div>
+           <div className="cart__price">Общая сумма: <span>{allPrice} рублей</span> <a className='btn btn-success' href='https://qiwi.com/' target='_blank' >Купить</a></div>
             </>
             :<div className='cartEmpty'>
                <p style={{textAlign: 'center'}}>Корзина пуста</p>
@@ -21,11 +23,6 @@ const Cart = (props) => {
             </div>}
       </div>
    )
-}
+})
 
-const mapStateToProps = (state) =>({
-   choosenBooks: state.cart.choosenBooks,
-   allPrice: state.cart.allPrice
- })
-
-export default connect(mapStateToProps, {addBook,removeBook})(Cart)
+export default Cart

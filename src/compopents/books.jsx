@@ -1,9 +1,12 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { setBooks, sortPriceDown, sortPriceUp } from '../redux/reducers/booksReducer'
 import Book from './book'
+import booksStore from "../mobx/booksStore";
+import {observer} from "mobx-react-lite";
 
-const Books = ({books, setBooks, sortPriceDown, sortPriceUp}) => {
+const Books = observer( () => {
+
+   const {books, setBooks, sortPriceDown, sortPriceUp} = booksStore
+
    if(books.length===1)
    return (
       <div className="search container">
@@ -24,6 +27,6 @@ const Books = ({books, setBooks, sortPriceDown, sortPriceUp}) => {
       </div>
       </>
    )
-}
+})
 
-export default connect(()=>{}, {setBooks,sortPriceDown, sortPriceUp})(Books)
+export default Books

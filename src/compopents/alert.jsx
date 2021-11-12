@@ -1,10 +1,14 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom';
+import booksStore from "../mobx/booksStore";
+import {observer} from "mobx-react-lite";
 
-const Alert = (props) => {
-   const className = props.alert.type === 'danger'?'alert-danger':
-   props.alert.type === 'success'?'alert-success':'alert-warning'
-   
+const Alert = observer(() => {
+
+  const {alert, changeAlert} = booksStore
+
+   const className = alert.type === 'danger'?'alert-danger':
+   alert.type === 'success'?'alert-success':'alert-warning'
+
    let message = ''
 
    switch(className){
@@ -14,12 +18,12 @@ const Alert = (props) => {
       default: break
    }
 
-   return (  
-        <div className={`alert ${className}`}> 
+   return (
+        <div className={`alert ${className}`}>
             <span> <strong>Внимание!</strong> {message} </span>
-            <button  onClick={() => props.changeAlert({ show: false, type: '' })} type="button" class="alert__closeBtn close">&times;</button>
-         </div> 
+            <button  onClick={() => changeAlert({ show: false, type: '' })} type="button" class="alert__closeBtn close">&times;</button>
+         </div>
    )
-}
+})
 
 export default Alert
