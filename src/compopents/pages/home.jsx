@@ -1,9 +1,9 @@
 import React from 'react'
-import Alert from '../alert';
-import Books from '../books';
-import booksStore from "../../mobx/booksStore";
-import {observer} from "mobx-react-lite";
+import { observer } from 'mobx-react-lite'
+import Alert from '../alert'
+import Books from '../books'
+import booksStore from '../../store/booksStore'
 
-const HomePage = observer(() => booksStore.alert.show?<Alert />:<Books />)
+const HomePage = observer(() => (booksStore.alert.show ? <Alert /> : <Books />))
 
 export default HomePage
