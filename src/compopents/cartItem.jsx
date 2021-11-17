@@ -1,6 +1,4 @@
 import React from 'react'
-import { connect } from 'react-redux';
-import { addBook, decrementCountBook, incrementCountBook } from '../redux/reducers/cartReducer';
 import cartStore from "../mobx/cartStore";
 import {observer} from "mobx-react-lite";
 

@@ -1,5 +1,5 @@
-import React, {useMemo, useState} from 'react'
-import { NavLink, Redirect } from 'react-router-dom'
+import React, {useMemo} from 'react'
+import {NavLink} from 'react-router-dom'
 import SearchForm from './input'
 import {observer} from "mobx-react-lite";
 import booksStore from "../mobx/booksStore";
@@ -32,7 +32,7 @@ const Header = observer(() => {
                   <img  title='Корзина' src='https://baden-shop.ru/images/basket.png' alt=""/>
                   {!!choosenBooks.length && <span >{choosenBooksCount}</span>}
                </NavLink>
-              <SearchForm onSubmit={(data)=>searchBook(data.book)}/>
+              <SearchForm searchBook={searchBook}/>
             </div>
          </div>
       </header>

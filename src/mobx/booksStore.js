@@ -1,6 +1,5 @@
-import {action, makeAutoObservable, makeObservable, runInAction} from "mobx";
+import {makeAutoObservable} from "mobx";
 import API from "../API/API";
-import {changeAlert} from "../redux/reducers/booksReducer";
 
 class BooksStore {
   books = []
@@ -17,8 +16,6 @@ class BooksStore {
     this.books = books || this.books
     this.isLoading = false
   }
-
-
 
   sortPriceDown = () => {
     this.isLoading = true
