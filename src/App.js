@@ -2,6 +2,7 @@ import './scss/App.scss'
 import React, { useEffect } from 'react'
 import { Redirect, Route } from 'react-router-dom'
 import { observer } from 'mobx-react-lite'
+import { Container } from 'react-bootstrap'
 import Header from './compopents/header'
 import Loader from './compopents/loader'
 import Cart from './compopents/pages/cart'
@@ -17,10 +18,11 @@ const App = observer(() => {
   }, [])
 
   return (
-    <div className="App container-xxl">
-      <Redirect to="/home" />
-      <Header />
-      {
+    <div className="App">
+      <Container fluid="xxl">
+        <Redirect to="/home" />
+        <Header />
+        {
         isLoading ? <Loader />
           : (
             <>
@@ -29,6 +31,7 @@ const App = observer(() => {
             </>
           )
       }
+      </Container>
     </div>
   )
 })

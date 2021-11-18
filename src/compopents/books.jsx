@@ -1,5 +1,6 @@
 import React from 'react'
 import { observer } from 'mobx-react-lite'
+import { Container } from 'react-bootstrap'
 import Book from './book'
 import booksStore from '../store/booksStore'
 
@@ -23,9 +24,9 @@ const Books = observer(() => {
         <button className="btn btn-secondary" onClick={sortPriceUp}>Цена ↑</button>
         <button className="btn btn-secondary" onClick={setBooks}>Сбросить</button>
       </div>
-      <div className="books container">
+      <Container fluid="xxl" className="books">
         {books && books.map(book => <Book key={book.title} book={book} />)}
-      </div>
+      </Container>
     </>
   )
 })
