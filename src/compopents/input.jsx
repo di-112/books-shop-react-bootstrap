@@ -1,16 +1,19 @@
-import React from 'react'
-import { reduxForm } from 'redux-form'
-import { Field } from 'redux-form'
+import React, { useState } from 'react'
 
-let  SearchForm = ({handleSubmit}) => {
-   return (
-      <form className="d-flex" onSubmit={handleSubmit}>
-      <Field component='input' className="form-control mr-2" name='book' type="search" placeholder="Edit book..." aria-label="Search"/>
-       <button className="btn btn-outline-success" type='submit'> Search</button> 
-   </form>
-   )
+const SearchForm = function ({ searchBook }) {
+  const [value, setValue] = useState(null)
+  return (
+    <div className="d-flex">
+      <input
+        value={value}
+        onChange={e => setValue(e.currentTarget.value)}
+        className="form-control mr-2"
+        type="search"
+        placeholder="Edit book..."
+        aria-label="Search"
+      />
+      <button onClick={() => searchBook(value)} className="btn btn-outline-success" type="submit"> Search</button>
+    </div>
+  )
 }
-
-SearchForm = reduxForm({form: 'searchForm'})(SearchForm)
-
-export  default SearchForm
+export default SearchForm

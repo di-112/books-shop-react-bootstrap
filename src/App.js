@@ -1,47 +1,36 @@
-import './scss/App.scss';
-import Header from './compopents/header';
-import Books from './compopents/books';
-import { connect } from 'react-redux';
-import Loader from './compopents/loader';
-import { changeAlert, searchBook, setBooks } from './redux/reducers/booksReducer';
-import { useEffect } from 'react';
-import { Redirect, Route, withRouter } from 'react-router-dom';
-import { compose } from 'redux';
-import Cart from './compopents/pages/cart';
-import HomePage from './compopents/pages/home';
+import './scss/App.scss'
+import React, { useEffect } from 'react'
+import { Redirect, Route } from 'react-router-dom'
+import { observer } from 'mobx-react-lite'
+import Header from './compopents/header'
+import Loader from './compopents/loader'
+import Cart from './compopents/pages/cart'
+import HomePage from './compopents/pages/home'
+import booksStore from './store/booksStore'
+import cartStore from './store/cartStore'
 
+const App = observer(() => {
+  const { isLoading, setBooks } = { ...booksStore, ...cartStore }
 
-function App(props) {
-
-  useEffect(()=>{
-   props.setBooks()
-  },[])
+  useEffect(async () => {
+    await setBooks()
+  }, [])
 
   return (
     <div className="App container-xxl">
-      <Redirect to='/home' />
-      <Header setBooks={ props.setBooks} searchBook={props.searchBook} choosenBooks={props.choosenBooks}/>
+      <Redirect to="/home" />
+      <Header />
       {
-        props.isLoading ? <Loader /> :
-        <>
-          <Route path='/home' exact render={() => <HomePage/>}/>
-          <Route path='/cart' exact render={() => <Cart />}/>
-          
-        </>
+        isLoading ? <Loader />
+          : (
+            <>
+              <Route path="/home" exact render={() => <HomePage />} />
+              <Route path="/cart" exact render={() => <Cart />} />
+            </>
+          )
       }
     </div>
-  );
-}
-
-const mapStateToProps = (state) =>({
-  books: state.books.books,
-  isLoading: state.books.isLoading,
-  alert: state.books.alert,
-  searchedBook: state.books.searchedBook,
-  choosenBooks: state.cart.choosenBooks
+  )
 })
 
-export default compose(
-  withRouter,
-  connect(mapStateToProps, {setBooks,searchBook, changeAlert})
-)(App)
+export default App

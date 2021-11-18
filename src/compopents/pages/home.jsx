@@ -1,20 +1,9 @@
 import React from 'react'
-import { changeAlert} from '../../redux/reducers/booksReducer';
-import Alert  from '../alert';
-import Books from '../books';
-import { connect } from 'react-redux';
+import { observer } from 'mobx-react-lite'
+import Alert from '../alert'
+import Books from '../books'
+import booksStore from '../../store/booksStore'
 
-const HomePage = (props) => {
-   return ( 
-      <>
-          {props.alert.show?<Alert alert={props.alert} changeAlert={props.changeAlert}/>:<Books books={props.books}/>}
-      </>
-   )
-} 
+const HomePage = observer(() => (booksStore.alert.show ? <Alert /> : <Books />))
 
-const mapStateToProps = (state) =>({
-   books: state.books.books,
-   alert: state.books.alert
- })
- 
- export default connect(mapStateToProps, {changeAlert})(HomePage);
+export default HomePage
