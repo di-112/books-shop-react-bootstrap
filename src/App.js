@@ -6,7 +6,7 @@ import Header from './compopents/header'
 import Loader from './compopents/loader'
 import Cart from './compopents/pages/cart'
 import HomePage from './compopents/pages/home'
-import booksStore from './store/booksStore.js'
+import booksStore from './store/booksStore'
 import cartStore from './store/cartStore'
 
 const App = observer(() => {

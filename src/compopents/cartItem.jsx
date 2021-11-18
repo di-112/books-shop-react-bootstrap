@@ -10,7 +10,13 @@ const CardItem = observer(({ book }) => {
         <img src={book.image} alt="" className="book__img" />
         <span className="book__title">{book.title}</span>
         <div className="book_count">
-          <button className="btn btn-danger" disabled={book.count === 1} onClick={e => { e.preventDefault(); decrementCountBook(book) }}>-</button>
+          <button
+            className="btn btn-danger"
+            disabled={book.count === 1}
+            onClick={e => { e.preventDefault(); decrementCountBook(book) }}
+          >
+            -
+          </button>
           <span className="">
             {' '}
             {book.count}

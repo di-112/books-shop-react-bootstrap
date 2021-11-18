@@ -1,10 +1,13 @@
-import {makeAutoObservable} from "mobx";
-import API from "../API/API";
+import { makeAutoObservable } from 'mobx'
+import API from '../API/API'
 
 class BooksStore {
   books = []
+
   isLoading = false
+
   alert = {}
+
   constructor() {
     makeAutoObservable(this)
   }
@@ -20,7 +23,7 @@ class BooksStore {
   sortPriceDown = () => {
     this.isLoading = true
     API.getBooks().then(data => {
-      this.books = [...data].sort( (a,b) => b.price-a.price) || this.books
+      this.books = [...data].sort((a, b) => b.price - a.price) || this.books
       this.isLoading = false
     })
   }
@@ -28,29 +31,31 @@ class BooksStore {
   sortPriceUp = () => {
     this.isLoading = true
     API.getBooks().then(data => {
-      this.books = [...data].sort( (a,b) => a.price-b.price) || this.books
+      this.books = [...data].sort((a, b) => a.price - b.price) || this.books
       this.isLoading = false
     })
   }
 
-  searchBook = (bookTitle)  => {
-   this.isLoading = true
+  searchBook = bookTitle => {
+    this.isLoading = true
     API.getBooks().then(data => {
       let isFoundBook = false
-      let books = []
+      const books = []
       data.forEach(book => {
-        if(book.title.toLowerCase().includes(bookTitle.toLowerCase())){
+        if (book.title.toLowerCase().includes(bookTitle.toLowerCase())) {
           books.push(book)
           isFoundBook = true
         }
       })
-      if(isFoundBook) this.books = books
-      if(!isFoundBook) this.alert = {type:'danger', show: true}
+      if (isFoundBook) this.books = books
+      if (!isFoundBook) this.alert = { type: 'danger', show: true }
       this.isLoading = false
     })
   }
 
-  changeAlert = alert => this.alert = alert
+  changeAlert = alert => {
+    this.alert = alert
+  }
 }
 
 export default new BooksStore()
