@@ -24,10 +24,11 @@ $backgrd: 'https://www.mola.com/wp-content/uploads/2016/02/pattern-web-1-1024x57
   top: 0;
   width: 100%;
   z-index: 2;
-  & .navbar-brand>img{
+  & .logo{
     width: 50px;
     border-radius: 50%;
     border: 2px solid black;
+    padding: 0 !important;
   }
   & .cartIcon{
     position: relative;
@@ -54,6 +55,10 @@ $backgrd: 'https://www.mola.com/wp-content/uploads/2016/02/pattern-web-1-1024x57
     @media (max-width: 539px) {
       display: none;
     }
+  }
+  .nav-item {
+    display: flex;
+    align-items: center;
   }
   & .header__menu {
     display: flex;

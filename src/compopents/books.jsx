@@ -6,9 +6,7 @@ import Book from './book'
 import booksStore from '../store/booksStore'
 
 const Books = observer(() => {
-  const {
-    books, setBooks,
-  } = booksStore
+  const { books, setBooks } = booksStore
 
   if (books.length === 1) {
     return (
