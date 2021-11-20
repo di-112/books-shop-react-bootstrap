@@ -1,18 +1,17 @@
 import React, { useState } from 'react'
+import { FormControl, Button } from 'react-bootstrap'
 
 const SearchForm = function ({ searchBook }) {
   const [value, setValue] = useState(null)
   return (
-    <div className="d-flex">
-      <input
+    <div className="d-flex ">
+      <FormControl
         value={value}
         onChange={e => setValue(e.currentTarget.value)}
-        className="form-control mr-2"
-        type="search"
+        className="mr-3"
         placeholder="Edit book..."
-        aria-label="Search"
       />
-      <button onClick={() => searchBook(value)} className="btn btn-outline-success" type="submit"> Search</button>
+      <Button onClick={() => searchBook(value)} variant="success"> Search</Button>
     </div>
   )
 }

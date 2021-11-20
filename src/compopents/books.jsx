@@ -1,33 +1,30 @@
 import React from 'react'
 import { observer } from 'mobx-react-lite'
-import { Container } from 'react-bootstrap'
+import { Button, Container } from 'react-bootstrap'
+import BooksToolbar from './booksToolbar'
 import Book from './book'
 import booksStore from '../store/booksStore'
 
 const Books = observer(() => {
   const {
-    books, setBooks, sortPriceDown, sortPriceUp,
+    books, setBooks,
   } = booksStore
 
   if (books.length === 1) {
     return (
-      <div className="search container">
+      <Container fluid="xl" className="d-flex flex-column align-items-center">
         {books.map(book => <Book key={book.title} book={book} />)}
-        <button className="btn btn-danger" onClick={setBooks}>Назад</button>
-      </div>
+        <Button variant="danger" className="mt-4" onClick={setBooks}>Назад</Button>
+      </Container>
     )
   }
   return (
-    <>
-      <div className="sortBooksBtns container">
-        <button className="btn btn-secondary" onClick={sortPriceDown}>Цена ↓</button>
-        <button className="btn btn-secondary" onClick={sortPriceUp}>Цена ↑</button>
-        <button className="btn btn-secondary" onClick={setBooks}>Сбросить</button>
-      </div>
-      <Container fluid="xxl" className="books">
+    <Container fluid="xl">
+      <BooksToolbar />
+      <div className="books">
         {books && books.map(book => <Book key={book.title} book={book} />)}
-      </Container>
-    </>
+      </div>
+    </Container>
   )
 })
 

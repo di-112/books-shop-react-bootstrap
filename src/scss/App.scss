@@ -115,15 +115,6 @@ $backgrd: 'https://www.mola.com/wp-content/uploads/2016/02/pattern-web-1-1024x57
   & .book__body {
     display: flex;
     flex-direction: column;
-    & span{
-      font-weight: bold;
-    }
-  }
-  & .btn_container{
-    flex: 1 1 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
   }
   & .book__img{
     position: relative;
@@ -176,14 +167,4 @@ $backgrd: 'https://www.mola.com/wp-content/uploads/2016/02/pattern-web-1-1024x57
   width: 100%;
   display: flex;
   justify-content: center;
-}
-
-.search{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  & h2, .book{
-    margin-bottom: 20px;
-  }
 }

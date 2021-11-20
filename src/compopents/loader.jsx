@@ -5,7 +5,7 @@ const Loader = function () {
   return (
     <Container fluid="xxl" className="spinner-wrapper">
       <Spinner animation="border" variant="primary" role="status">
-        <span className="visually-hidden">Loading...</span>
+        <span className="visually-hidden" />
       </Spinner>
     </Container>
   )
