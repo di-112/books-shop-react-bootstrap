@@ -16,7 +16,7 @@ const Header = observer(() => {
   return (
     <header className="header navbar-expand-lg py-2 px-3 bg-light">
       <div className="header__menu collapse navbar-collapse">
-        <Nav className="header__links navbar-nav mr-auto mb-2 mb-lg-0">
+        <Nav className="header__links mr-auto mb-2">
           <Nav.Item>
             <Nav.Link as="img" src={logoImg} className="logo" alt="" to="/home" exact onClick={setBooks} />
           </Nav.Item>
