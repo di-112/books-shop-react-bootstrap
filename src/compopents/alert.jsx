@@ -1,39 +1,26 @@
 import React from 'react'
 import { observer } from 'mobx-react-lite'
+import { Alert as AlertBS } from 'react-bootstrap'
 import booksStore from '../store/booksStore'
 
 const Alert = observer(() => {
   const { alert, changeAlert } = booksStore
-
-  const className = alert.type === 'danger' ? 'alert-danger'
-    : alert.type === 'success' ? 'alert-success' : 'alert-warning'
-
   let message = ''
 
-  switch (className) {
-    case 'alert-danger': message = 'Книга не найдена'; break
-    case 'alert-success': message = 'Книга найдена'; break
-    case 'alert-warning': message = 'Что-то пошло не так'; break
+  switch (alert.type) {
+    case 'danger': message = 'Книга не найдена'; break
+    case 'success': message = 'Книга найдена'; break
+    case 'warning': message = 'Что-то пошло не так'; break
     default: break
   }
 
   return (
-    <div className={`alert ${className}`}>
-      <span>
-        {' '}
-        <strong>Внимание!</strong>
-        {' '}
+    <AlertBS variant={alert.type} onClose={() => changeAlert({ show: false, type: '' })} dismissible>
+      <AlertBS.Heading>Внимание</AlertBS.Heading>
+      <p>
         {message}
-        {' '}
-      </span>
-      <button
-        onClick={() => changeAlert({ show: false, type: '' })}
-        type="button"
-        className="alert__closeBtn close"
-      >
-        &times;
-      </button>
-    </div>
+      </p>
+    </AlertBS>
   )
 })
 

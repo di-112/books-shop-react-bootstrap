@@ -1,12 +1,13 @@
 import React from 'react'
+import { Container, Spinner } from 'react-bootstrap'
 
 const Loader = function () {
   return (
-    <div className="spinner">
-      <div className="spinner-border text-dark" role="status">
-        <span className="sr-only">Loading...</span>
-      </div>
-    </div>
+    <Container fluid="xxl" className="spinner-wrapper">
+      <Spinner animation="border" variant="primary" role="status">
+        <span className="visually-hidden" />
+      </Spinner>
+    </Container>
   )
 }
 

@@ -17,7 +17,7 @@ const App = observer(() => {
   }, [])
 
   return (
-    <div className="App container-xxl">
+    <div className="App">
       <Redirect to="/home" />
       <Header />
       {
