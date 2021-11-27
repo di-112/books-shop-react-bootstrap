@@ -5,8 +5,7 @@ import { Nav } from 'react-bootstrap'
 import booksStore from '../store/booksStore'
 import cartStore from '../store/cartStore'
 import SearchForm from './input'
-
-const logoImg = 'https://f0.pngfuel.com/png/1024/338/computer-icons-e-book-e-readers-book-png-clip-art-thumbnail.png'
+import logoImg from '../assets/logo.png'
 
 const Header = observer(() => {
   const { setBooks, searchBook, choosenBooks } = { ...booksStore, ...cartStore }
@@ -14,7 +13,7 @@ const Header = observer(() => {
   const choosenBooksCount = useMemo(() => choosenBooks.reduce((acc, book) => acc + book.count, 0), [choosenBooks])
 
   return (
-    <header className="header navbar-expand-lg py-2 px-3 bg-light">
+    <header className="header navbar navbar-expand-lg py-2 px-3 bg-light">
       <div className="header__menu collapse navbar-collapse">
         <Nav className="header__links mr-auto mb-2">
           <Nav.Item>
@@ -27,11 +26,13 @@ const Header = observer(() => {
             <Nav.Link as={NavLink} to="/cart" exact onClick={setBooks}> Cart </Nav.Link>
           </Nav.Item>
         </Nav>
-        <NavLink to="/cart" className="cartIcon">
-          <img title="Корзина" src="https://baden-shop.ru/images/basket.png" alt="" />
-          {!!choosenBooks.length && <span>{choosenBooksCount}</span>}
-        </NavLink>
-        <SearchForm searchBook={searchBook} />
+        <div className="d-flex">
+          <NavLink to="/cart" className="cartIcon">
+            <img title="Корзина" src="https://baden-shop.ru/images/basket.png" alt="" />
+            {!!choosenBooks.length && <span>{choosenBooksCount}</span>}
+          </NavLink>
+          <SearchForm searchBook={searchBook} />
+        </div>
       </div>
     </header>
   )
