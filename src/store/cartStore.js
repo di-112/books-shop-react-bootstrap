@@ -11,24 +11,14 @@ class CartStore {
 
   summa = array => array.reduce((sum, book) => sum + book.price * book.count, 0)
 
-  /*  summa = array => {
-    let sum = 0
-    for (let i = 0; i < array.length; i++) {
-      sum += array[i].price * array[i].count
-    }
-    return sum
-  } */
-
     addBook = book => {
       this.choosenBooks = this.choosenBooks.concat([{ ...book, count: 1 }])
       this.allPrice = this.summa(this.choosenBooks)
-      console.log(this.choosenBooks, this.allPrice)
     }
 
   removeBook = book => {
     this.choosenBooks = this.choosenBooks.filter(currentBook => currentBook.title !== book.title)
     this.allPrice = this.summa(this.choosenBooks)
-    console.log(this.choosenBooks, this.allPrice)
   }
 
   incrementCountBook = book => {
@@ -39,7 +29,6 @@ class CartStore {
       })
       this.allPrice = this.summa(this.choosenBooks)
     }
-    console.log(this.choosenBooks, this.allPrice)
   }
 
   decrementCountBook = book => {
@@ -51,7 +40,6 @@ class CartStore {
       })
       this.allPrice = this.summa(this.choosenBooks)
     }
-    console.log(this.choosenBooks, this.allPrice)
   }
 }
 
