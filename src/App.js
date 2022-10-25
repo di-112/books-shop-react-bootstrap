@@ -35,4 +35,6 @@ const App = observer(() => {
   )
 })
 
+console.log('test5')
+
 export default App
