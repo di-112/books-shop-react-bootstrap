@@ -9,12 +9,16 @@ import HomePage from './compopents/pages/home'
 import booksStore from './store/booksStore'
 import cartStore from './store/cartStore'
 
+console.log('test3')
+
 const App = observer(() => {
   const { isLoading, setBooks } = { ...booksStore, ...cartStore }
 
   useEffect(async () => {
     await setBooks()
   }, [])
+
+  console.log('test5')
 
   return (
     <div className="App">
@@ -32,5 +36,7 @@ const App = observer(() => {
     </div>
   )
 })
+
+console.log('test5')
 
 export default App
