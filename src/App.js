@@ -19,6 +19,8 @@ const App = observer(() => {
   }, [])
 
   console.log('tes6')
+  console.log('tes6')
+  console.log('tes6')
 
   console.log('test5')
 
