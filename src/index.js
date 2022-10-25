@@ -4,6 +4,8 @@ import './index.css'
 import { HashRouter } from 'react-router-dom'
 import App from './App'
 
+console.log('test6')
+
 ReactDOM.render(
   <React.StrictMode>
     <HashRouter>
