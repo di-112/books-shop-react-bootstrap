@@ -18,6 +18,8 @@ const App = observer(() => {
     await setBooks()
   }, [])
 
+  console.log('test5')
+
   return (
     <div className="App">
       <Redirect to="/home" />
