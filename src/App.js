@@ -18,6 +18,8 @@ const App = observer(() => {
     await setBooks()
   }, [])
 
+  console.log('tes6')
+
   console.log('test5')
 
   return (
